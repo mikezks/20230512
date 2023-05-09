@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Flight Search</h2>
+  </div>
+
+  <div class="card-body">
+    <form #form="ngForm">
+      <div class="form-group">
+        <label>From:</label>
+        <input [(ngModel)]="from" name="from" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>To:</label>
+        <input [(ngModel)]="to" name="to" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <button
+          (click)="bookingFeature.search(from, to)"
+          [disabled]="!from || !to"
+          class="btn btn-default"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div
+    *ngFor="let flight of bookingFeature.flights$ | async"
+    class="col-xs-12 col-sm-6 col-md-4"
+  >
+    <app-flight-card
+      [item]="flight"
+      [(selected)]="basket[flight.id]">
+    </app-flight-card>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Basket</h2>
+  </div>
+
+  <div class="card-body">
+    <pre>{{ basket | json }}</pre>
+  </div>
+</div>
