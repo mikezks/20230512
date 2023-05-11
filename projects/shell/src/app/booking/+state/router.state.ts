@@ -1,4 +1,4 @@
-import { EnvironmentProviders } from "@angular/core";
+import { EnvironmentProviders, makeEnvironmentProviders } from "@angular/core";
 import { BaseRouterStoreState, getRouterSelectors, provideRouterStore, routerReducer } from "@ngrx/router-store";
 import { createFeature, provideState } from "@ngrx/store";
 
@@ -13,9 +13,9 @@ export const routerFeature = createFeature({
   })
 });
 
-export function provideRouterFeature(): EnvironmentProviders[] {
-  return [
+export function provideRouterFeature(): EnvironmentProviders {
+  return makeEnvironmentProviders([
     provideState(routerFeature),
     provideRouterStore()
-  ];
+  ]);
 }

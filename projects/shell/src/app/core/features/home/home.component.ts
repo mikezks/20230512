@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [],
   template: `
     <div class="card">
       <div class="card-header">
@@ -13,14 +11,13 @@ import { Component } from '@angular/core';
 
       <div class="card-body">
         <ul>
-          <li>Signals - The new reactive primitive.</li>
-          <li>
-            Global State Management:
-            <code>@ngrx/store</code>
-          </li>
-          <li>
-            Local State Management:
-            <code>@ngrx/component-store</code>
+          <li>Standalone APIs</li>
+          <li>Signals - The new reactive primitive</li>
+          <li>Single File State Management</li>
+          <li>New Features
+            <a href="https://blog.angular.io/angular-v14-is-now-available-391a6db736af">v14</a>,
+            <a href="https://blog.angular.io/angular-v15-is-now-available-df7be7f2f4c8">v15</a>,
+            <a href="https://blog.angular.io/angular-v16-is-here-4d7a28ec680d">v16</a>
           </li>
         </ul>
       </div>

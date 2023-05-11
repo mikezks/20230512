@@ -1,15 +1,8 @@
-import { DatePipe, NgStyle } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { Flight } from '../logic/model/flight';
 
 @Component({
   selector: 'app-flight-card',
-  standalone: true,
-  imports: [
-    NgStyle, DatePipe,
-    RouterLink
-  ],
   template: `
     <div
       class="card"
