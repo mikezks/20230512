@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, Injector, Input, effect, inject, runInInjectionContext } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { injectBookingFeature } from '../../../+state/booking.state';
 
@@ -19,8 +19,27 @@ export class EditComponent {
     delayed: [false]
   });
   #bookingFeature = injectBookingFeature();
+  #injector = inject(Injector);
+  #destroyRef = inject(DestroyRef);
+
+  constructor() {
+    this.#destroyRef.onDestroy(
+      () => { console.log('Ciao!') }
+    )
+  }
 
   save(): void {
     this.#bookingFeature.save(this.editForm.getRawValue());
+
+    runInInjectionContext(
+      this.#injector,
+      () => effect(() => {
+        this.editForm.patchValue(
+          this.#bookingFeature.activeFlight()
+        );
+      }, { manualCleanup: true })
+    )
+
+
   }
 }

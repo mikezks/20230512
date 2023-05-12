@@ -1,9 +1,9 @@
-import { EnvironmentProviders, inject, makeEnvironmentProviders } from "@angular/core";
+import { EnvironmentProviders, computed, inject, makeEnvironmentProviders } from "@angular/core";
 import { Actions, createEffect, ofType, provideEffects } from "@ngrx/effects";
 import { Store, createActionGroup, createFeature, createReducer, createSelector, emptyProps, on, props, provideState } from "@ngrx/store";
 import { Observable, filter, map, switchMap } from "rxjs";
 import { FlightService } from "../flight/logic/data-access/flight.service";
-import { Flight } from "../flight/logic/model/flight";
+import { Flight, initialFlight } from "../flight/logic/model/flight";
 import { routerFeature } from "./router.state";
 
 /**
@@ -140,13 +140,14 @@ export function provideBookingFeature() {
 
 export function injectBookingFeature() {
   const store = inject(Store);
+  const activeFlight = store.selectSignal(bookingFeature.selectActiveFlight);
 
   return {
     flights: store.selectSignal(bookingFeature.selectFlights),
     flights$: store.select(bookingFeature.selectFlights),
-    activeFlight$: store.select(bookingFeature.selectActiveFlight).pipe(
-      filter(f => !!f)
-    ) as Observable<Flight>,
+    activeFlight: computed(
+      () => activeFlight() || initialFlight
+    ),
     search: (from: string, to: string) => store.dispatch(
       bookingActions.flightsLoad({ from, to })
     ),

@@ -3,5 +3,5 @@ import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
 import { zoneless } from '@angular-architects/demo/signals-zoneless';
 
-zoneless.bootstrapApplication(AppComponent, appConfig)
+bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));

@@ -23,13 +23,16 @@
           Search
         </button>
       </div>
+      <div class="form-group">
+        {{ flightInfo() }}
+      </div>
     </form>
   </div>
 </div>
 
 <div class="row">
   <div
-    *ngFor="let flight of flights()"
+    *ngFor="let flight of bookingFeature.flights()"
     class="col-xs-12 col-sm-6 col-md-4"
   >
     <app-flight-card
