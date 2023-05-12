@@ -7,17 +7,17 @@
     <form #form="ngForm">
       <div class="form-group">
         <label>From:</label>
-        <input [(ngModel)]="from" name="from" class="form-control" />
+        <input [ngModel]="from()" (ngModelChange)="from.set($event)" name="from" class="form-control" />
       </div>
       <div class="form-group">
         <label>To:</label>
-        <input [(ngModel)]="to" name="to" class="form-control" />
+        <input [ngModel]="to()" (ngModelChange)="to.set($event)" name="to" class="form-control" />
       </div>
 
       <div class="form-group">
         <button
-          (click)="bookingFeature.search(from, to)"
-          [disabled]="!from || !to"
+          (click)="bookingFeature.search(from(), to())"
+          [disabled]="!from() || !to()"
           class="btn btn-default"
         >
           Search
@@ -29,12 +29,13 @@
 
 <div class="row">
   <div
-    *ngFor="let flight of bookingFeature.flights$ | async"
+    *ngFor="let flight of bookingFeature.flights()"
     class="col-xs-12 col-sm-6 col-md-4"
   >
     <app-flight-card
       [item]="flight"
-      [(selected)]="basket[flight.id]">
+      [selected]="basket()[flight.id]"
+      (selectedChange)="updateBasket(flight.id, $event)">
     </app-flight-card>
   </div>
 </div>
@@ -45,6 +46,6 @@
   </div>
 
   <div class="card-body">
-    <pre>{{ basket | json }}</pre>
+    <pre>{{ basket() | json }}</pre>
   </div>
 </div>
