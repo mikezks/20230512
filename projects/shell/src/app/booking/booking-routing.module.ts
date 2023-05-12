@@ -9,8 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'flight',
-    loadChildren: () => import('./flight/flight.module')
-      .then(esm => esm.FlightModule)
+    loadChildren: () => import('./flight/flight.routes')
   },
   {
     path: 'passenger',
