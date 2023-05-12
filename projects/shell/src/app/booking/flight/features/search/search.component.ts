@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AsyncPipe, JsonPipe, NgFor } from '@angular/common';
 import { injectBookingFeature } from '../../../+state/booking.state';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,8 @@ import { CardComponent } from '../../ui/card.component';
   templateUrl: './search.component.html'
 })
 export class SearchComponent {
+  @Input() name = '';
+
   from = 'Paris';
   to = 'London';
   basket: Record<number, boolean> = {

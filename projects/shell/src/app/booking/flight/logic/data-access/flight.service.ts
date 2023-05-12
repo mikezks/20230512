@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, delay, of } from 'rxjs';
 import { Flight } from '../model/flight';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class FlightService {
   flights: Flight[] = [];
   baseUrl = `https://demo.angulararchitects.io/api`;
   #http = inject(HttpClient);
+  isAllowed$ = of(true).pipe(delay(0));
 
   load(from: string, to: string, urgent: boolean): void {
     this.find(from, to, urgent).subscribe({
