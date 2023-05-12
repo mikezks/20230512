@@ -143,6 +143,7 @@ export function injectBookingFeature() {
 
   return {
     flights: store.selectSignal(bookingFeature.selectFlights),
+    flights$: store.select(bookingFeature.selectFlights),
     activeFlight$: store.select(bookingFeature.selectActiveFlight).pipe(
       filter(f => !!f)
     ) as Observable<Flight>,
