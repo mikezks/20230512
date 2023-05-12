@@ -17,8 +17,7 @@ export const routes: Routes = [
   },
   {
     path: 'booking',
-    loadChildren: () => import('./booking/booking.module')
-      .then(esm => esm.BookingModule)
+    loadChildren: () => import('./booking/booking.routes')
   },
   {
     path: '**',
