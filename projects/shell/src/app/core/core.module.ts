@@ -11,22 +11,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    NavbarComponent,
-    SidebarComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    HttpClientModule,
-    StoreModule.forRoot(),
-    EffectsModule.forRoot(),
-    StoreDevtoolsModule.instrument()
-  ],
-  exports: [
-    NavbarComponent,
-    SidebarComponent
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        HttpClientModule,
+        StoreModule.forRoot(),
+        EffectsModule.forRoot(),
+        StoreDevtoolsModule.instrument(),
+        HomeComponent,
+        NavbarComponent,
+        SidebarComponent
+    ],
+    exports: [
+        NavbarComponent,
+        SidebarComponent
+    ]
 })
 export class CoreModule { }

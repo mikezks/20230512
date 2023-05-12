@@ -8,15 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    SearchComponent,
-    EditComponent
-  ],
-  imports: [
-    CommonModule,
-    PassengerRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        PassengerRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SearchComponent,
+        EditComponent
+    ]
 })
 export class PassengerModule { }

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'app-navbar-cmp',
-  templateUrl: 'navbar.component.html'
+    selector: 'app-navbar-cmp',
+    templateUrl: 'navbar.component.html',
+    standalone: true
 })
 export class NavbarComponent {
 

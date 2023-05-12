@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { injectBookingFeature } from '../../../+state/booking.state';
 
 @Component({
-  selector: 'app-flight-edit',
-  templateUrl: './edit.component.html'
+    selector: 'app-flight-edit',
+    templateUrl: './edit.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class EditComponent {
   editForm = inject(NonNullableFormBuilder).group({

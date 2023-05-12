@@ -6,14 +6,12 @@ import { FlightRoutingModule } from './flight-routing.module';
 
 
 @NgModule({
-  declarations: [
-    EditComponent
-  ],
-  imports: [
-    CommonModule,
-    FlightRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        FlightRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        EditComponent
+    ]
 })
 export class FlightModule { }

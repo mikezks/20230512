@@ -1,10 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { PassengerService } from '../../logic/data-access/passenger.service';
 import { Passenger } from '../../logic/model/passenger';
+import { RouterLink } from '@angular/router';
+import { NgIf, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-passenger-search',
-  templateUrl: './search.component.html'
+    selector: 'app-passenger-search',
+    templateUrl: './search.component.html',
+    standalone: true,
+    imports: [FormsModule, NgIf, NgFor, RouterLink]
 })
 export class SearchComponent {
   firstname = '';

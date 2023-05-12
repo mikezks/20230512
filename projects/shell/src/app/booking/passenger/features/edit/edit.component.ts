@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { validatePassengerStatus } from '../../util/validation/passenger-status.validator';
 import { PassengerService } from './../../logic/data-access/passenger.service';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-passenger-edit',
-  templateUrl: './edit.component.html'
+    selector: 'app-passenger-edit',
+    templateUrl: './edit.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NgIf]
 })
 export class EditComponent {
   editForm = inject(NonNullableFormBuilder).group({
